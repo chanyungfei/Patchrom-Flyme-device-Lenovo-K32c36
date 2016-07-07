@@ -1,0 +1,1 @@
+Base on cm12.1 For Lenovo K32c36.
