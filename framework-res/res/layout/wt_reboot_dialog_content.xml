@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/checkbox_linearLayout" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight" android:paddingStart="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textColor="#ff737373" android:id="@id/status" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ipo_summary" />
+</LinearLayout>
