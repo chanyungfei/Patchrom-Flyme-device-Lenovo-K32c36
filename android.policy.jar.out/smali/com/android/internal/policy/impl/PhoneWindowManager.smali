@@ -207,6 +207,16 @@
 
 
 # instance fields
+.field mFlymeBootLayout:Landroid/view/View;
+
+.field mFlymeBootMsgBar:Landroid/widget/ProgressBar;
+
+.field mFlymeBootMsgText:Landroid/widget/TextView;
+
+.field mFlymeBootMsgTitle:Landroid/widget/TextView;
+
+.field mFlymeStatusBarService:Lmeizu/statusbar/IFlymeStatusBarService;
+
 .field HOOK_DEBOUNCE_DELAY_MILLIS:I
 
 .field private last_keyEvent_time:J
@@ -15222,6 +15232,9 @@
     invoke-virtual {p0, v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->goingToSleep(I)V
 
     :cond_3
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->initFlymeExtraFields(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/content/Context;)V
+
     return-void
 
     .end local v0    # "filter":Landroid/content/IntentFilter;

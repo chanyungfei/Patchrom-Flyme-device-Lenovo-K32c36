@@ -3123,6 +3123,8 @@
     .line 1350
     :cond_0
     :try_start_0
+    invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiManager;->flymeEnforceWifiPermission()V
+
     iget-object v3, p0, Landroid/net/wifi/WifiManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v3}, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;

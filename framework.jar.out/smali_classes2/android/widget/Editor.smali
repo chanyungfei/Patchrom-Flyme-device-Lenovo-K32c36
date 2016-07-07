@@ -64,6 +64,26 @@
 
 
 # instance fields
+.field public mCursorOffsetX:I
+
+.field public mEnableDragSelection:Z
+
+.field public mHandler:Landroid/widget/Editor$OptionHandle;
+
+.field public mIsInDragSelectionMode:Z
+
+.field public mLastLayoutHeight:I
+
+.field public mLastScrollTime:J
+
+.field public mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+.field public mSelectionActionModeCallback:Landroid/widget/Editor$SelectionActionModeCallback;
+
+.field public mSelectonActionModeRunnable:Ljava/lang/Runnable;
+
+.field public mStartActionModeResult:Z
+
 .field public final SHOW_POP_MENU:I
 
 .field mBlink:Landroid/widget/Editor$Blink;
@@ -289,6 +309,9 @@
 
     .line 268
     :cond_1
+
+    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->initFlymeExtraFields(Landroid/widget/Editor;)V
+
     return-void
 .end method
 
@@ -7055,6 +7078,9 @@
     invoke-virtual {v0}, Landroid/widget/Editor$SelectPopupWindow;->finish()V
 
     :cond_1
+
+    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->hideSelectionModifierCursorController(Landroid/widget/Editor;)V
+
     return-void
 .end method
 

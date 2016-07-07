@@ -1014,6 +1014,12 @@
 
     or-int/2addr v0, p1
 
+    or-int/lit16 v0, v0, 0x4000
+
+    const v1, 0x8000
+
+    or-int/2addr v0, v1
+
     const/high16 v1, 0x20000000
 
     or-int/2addr v0, v1
@@ -2765,6 +2771,10 @@
 
     sub-int v2, v3, v4
 
+    invoke-static {p0, p1, v2}, Landroid/content/res/Configuration$FlymeInjector;->compareTo(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v2
+
     if-nez v2, :cond_0
 
     iget-object v3, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
@@ -3078,6 +3088,11 @@
     or-int/lit16 v0, v0, 0x1000
 
     :cond_12
+
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->diff(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v0
+
     iget-object v2, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
 
     iget-object v3, p1, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
@@ -3290,6 +3305,10 @@
     iget v2, p0, Landroid/content/res/Configuration;->densityDpi:I
 
     add-int v0, v1, v2
+
+    invoke-static {p0, v0}, Landroid/content/res/Configuration$FlymeInjector;->hashCode(Landroid/content/res/Configuration;I)I
+
+    move-result v0
 
     mul-int/lit8 v1, v0, 0x1f
 
@@ -3556,6 +3575,8 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->readFromParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;)V
+
     iget-object v0, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
 
     invoke-virtual {v0, p1}, Landroid/content/res/VibeExtraConfiguration;->readFromParcel(Landroid/os/Parcel;)V
@@ -3715,6 +3736,8 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
+
     iget-object v0, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
 
     iget-object v1, p1, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
@@ -3779,6 +3802,8 @@
     iput v1, p0, Landroid/content/res/Configuration;->densityDpi:I
 
     iput v1, p0, Landroid/content/res/Configuration;->seq:I
+
+    invoke-static/range {p0 .. p0}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;)V
 
     iget-object v0, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
 
@@ -5058,6 +5083,11 @@
     iput v2, p0, Landroid/content/res/Configuration;->seq:I
 
     :cond_19
+
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->updateFrom(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v0
+
     iget-object v2, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
 
     iget-object v3, p1, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
@@ -5188,6 +5218,8 @@
     iget v0, p0, Landroid/content/res/Configuration;->seq:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    invoke-static/range {p0 .. p2}, Landroid/content/res/Configuration$FlymeInjector;->writeToParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;I)V
 
     iget-object v0, p0, Landroid/content/res/Configuration;->mVibeExtraConfiguration:Landroid/content/res/VibeExtraConfiguration;
 

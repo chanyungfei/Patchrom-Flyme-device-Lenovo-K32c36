@@ -3970,6 +3970,8 @@
 
     .line 1175
     :cond_2
+    :goto_flyme_0
+
     const/4 v0, 0x1
 
     if-ne p1, v0, :cond_3

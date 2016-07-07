@@ -176,6 +176,8 @@
 
     invoke-virtual {v0, v2}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
+    invoke-static/range {p0 .. p0}, Landroid/preference/EditTextPreference$FlymeInjector;->flymeSetEditTextSelection(Landroid/preference/EditTextPreference;)V
+
     invoke-virtual {p0}, Landroid/preference/EditTextPreference;->getText()Ljava/lang/String;
 
     move-result-object v2
