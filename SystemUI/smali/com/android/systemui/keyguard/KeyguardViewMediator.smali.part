@@ -1,0 +1,43 @@
+.method public setOccluded(Z)V
+    .locals 5
+    .param p1, "isOccluded"    # Z
+
+    .prologue
+    const/16 v4, 0xc
+
+    const/4 v2, 0x0
+
+    .line 885
+    iget-object v1, p0, Lcom/android/systemui/keyguard/KeyguardViewMediator;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v1, v4}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 886
+    iget-object v3, p0, Lcom/android/systemui/keyguard/KeyguardViewMediator;->mHandler:Landroid/os/Handler;
+
+    if-eqz p1, :cond_0
+
+    const/4 v1, 0x1
+
+    :goto_0
+    invoke-virtual {v3, v4, v1, v2}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
+
+    move-result-object v0
+
+    .line 887
+    .local v0, "msg":Landroid/os/Message;
+    iget-object v1, p0, Lcom/android/systemui/keyguard/KeyguardViewMediator;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v1, v0}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 888
+    return-void
+
+    .end local v0    # "msg":Landroid/os/Message;
+    :cond_0
+    move v1, v2
+
+    .line 886
+    goto :goto_0
+.end method
+

@@ -1,0 +1,113 @@
+.field private mIsOccluded:Z
+
+.method public setOccluded(Z)I
+    .locals 2
+    .param p1, "isOccluded"    # Z
+
+    .prologue
+    .line 107
+    iget-object v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->this$0:Lcom/android/systemui/keyguard/KeyguardService;
+
+    invoke-virtual {v1}, Lcom/android/systemui/keyguard/KeyguardService;->checkPermission()V
+
+    .line 108
+    monitor-enter p0
+
+    .line 110
+    if-eqz p1, :cond_1
+
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->this$0:Lcom/android/systemui/keyguard/KeyguardService;
+
+    # getter for: Lcom/android/systemui/keyguard/KeyguardService;->mKeyguardViewMediator:Lcom/android/systemui/keyguard/KeyguardViewMediator;
+    invoke-static {v1}, Lcom/android/systemui/keyguard/KeyguardService;->access$000(Lcom/android/systemui/keyguard/KeyguardService;)Lcom/android/systemui/keyguard/KeyguardViewMediator;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/systemui/keyguard/KeyguardViewMediator;->isShowing()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    iget-boolean v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->mIsOccluded:Z
+
+    if-nez v1, :cond_1
+
+    .line 112
+    const/4 v0, 0x2
+
+    .line 121
+    .local v0, "result":I
+    :goto_0
+    iget-boolean v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->mIsOccluded:Z
+
+    if-eq v1, p1, :cond_0
+
+    .line 122
+    iget-object v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->this$0:Lcom/android/systemui/keyguard/KeyguardService;
+
+    # getter for: Lcom/android/systemui/keyguard/KeyguardService;->mKeyguardViewMediator:Lcom/android/systemui/keyguard/KeyguardViewMediator;
+    invoke-static {v1}, Lcom/android/systemui/keyguard/KeyguardService;->access$000(Lcom/android/systemui/keyguard/KeyguardService;)Lcom/android/systemui/keyguard/KeyguardViewMediator;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Lcom/android/systemui/keyguard/KeyguardViewMediator;->setOccluded(Z)V
+
+    .line 127
+    iput-boolean p1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->mIsOccluded:Z
+
+    .line 129
+    :cond_0
+    monitor-exit p0
+
+    return v0
+
+    .line 114
+    .end local v0    # "result":I
+    :cond_1
+    if-nez p1, :cond_2
+
+    iget-object v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->this$0:Lcom/android/systemui/keyguard/KeyguardService;
+
+    # getter for: Lcom/android/systemui/keyguard/KeyguardService;->mKeyguardViewMediator:Lcom/android/systemui/keyguard/KeyguardViewMediator;
+    invoke-static {v1}, Lcom/android/systemui/keyguard/KeyguardService;->access$000(Lcom/android/systemui/keyguard/KeyguardService;)Lcom/android/systemui/keyguard/KeyguardViewMediator;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/systemui/keyguard/KeyguardViewMediator;->isShowing()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-boolean v1, p0, Lcom/android/systemui/keyguard/KeyguardService$1;->mIsOccluded:Z
+
+    if-eqz v1, :cond_2
+
+    .line 116
+    const/4 v0, 0x1
+
+    .restart local v0    # "result":I
+    goto :goto_0
+
+    .line 119
+    .end local v0    # "result":I
+    :cond_2
+    const/4 v0, 0x0
+
+    .restart local v0    # "result":I
+    goto :goto_0
+
+    .line 130
+    .end local v0    # "result":I
+    :catchall_0
+    move-exception v1
+
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
+.end method
+
