@@ -11,6 +11,7 @@
     value = {
         Lcom/android/server/am/ActivityStackSupervisor$VirtualActivityDisplay;,
         Lcom/android/server/am/ActivityStackSupervisor$ActivityDisplay;,
+        Lcom/android/server/am/ActivityStackSupervisor$FlymeInjector;,
         Lcom/android/server/am/ActivityStackSupervisor$VirtualActivityContainer;,
         Lcom/android/server/am/ActivityStackSupervisor$ActivityContainer;,
         Lcom/android/server/am/ActivityStackSupervisor$ActivityStackSupervisorHandler;,
@@ -88,6 +89,10 @@
 
 
 # instance fields
+.field mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+.field mRealPm:Lcom/android/server/pm/PackageManagerService;
+
 .field inResumeTopActivity:Z
 
 .field public lBoostCpuBoost:I
@@ -468,7 +473,7 @@
 
     move-result-object v0
 
-    const v1, 0x11200ae
+    const v1, #android:bool@config_enableCpuBoostForAppLaunch#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -490,7 +495,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0092
+    const v1, #android:integer@launchboost_schedboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -507,7 +512,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0091
+    const v1, #android:integer@launchboost_timeout_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -524,7 +529,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0090
+    const v1, #android:integer@disablepacking_timeout_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -541,7 +546,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0093
+    const v1, #android:integer@launchboost_cpuboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -558,7 +563,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0095
+    const v1, #android:integer@launchboost_pcdisbl_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -575,7 +580,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0096
+    const v1, #android:integer@launchboost_ksmboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -592,7 +597,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0097
+    const v1, #android:integer@launchboost_smtaskboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -609,7 +614,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0098
+    const v1, #android:integer@launchboost_idleloadboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -626,7 +631,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0099
+    const v1, #android:integer@launchboost_idlenrrunboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -643,7 +648,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e009a
+    const v1, #android:integer@launchboost_preferidle_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -660,7 +665,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0094
+    const v1, #android:integer@launchboost_cpunumboost_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -12030,6 +12035,18 @@
     .line 1586
     .end local v26    # "e":Landroid/os/RemoteException;
     :cond_19
+    move-object/from16 v7, p0
+
+    move-object/from16 v8, p2
+
+    move-object/from16 v9, p4
+
+    move/from16 v10, p11
+
+    invoke-static {v7, v8, v9, v10}, Lcom/android/server/am/ActivityStackSupervisor$FlymeInjector;->interceptForAccessControl(Lcom/android/server/am/ActivityStackSupervisor;Landroid/content/Intent;Landroid/content/pm/ActivityInfo;I)Landroid/content/pm/ActivityInfo;
+
+    move-result-object p4
+
     new-instance v7, Lcom/android/server/am/ActivityRecord;
 
     move-object/from16 v0, p0
@@ -16784,5 +16801,15 @@
 
     .prologue
     .line 3293
+    return-void
+.end method
+
+.method setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
+    .locals 0
+    .param p1, "pm"    # Lcom/android/server/pm/PackageManagerService;
+
+    .prologue
+    iput-object p1, p0, Lcom/android/server/am/ActivityStackSupervisor;->mRealPm:Lcom/android/server/pm/PackageManagerService;
+
     return-void
 .end method

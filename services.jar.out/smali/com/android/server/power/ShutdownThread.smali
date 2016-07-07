@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/power/ShutdownThread$FlymeInjector;,
         Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;
     }
 .end annotation
@@ -554,7 +555,7 @@
 
     move-result-object v5
 
-    const v6, 0x1120057
+    const v6, #android:bool@config_voice_capable#t
 
     invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1655,7 +1656,7 @@
 
     move-result-object v23
 
-    const v24, 0x1070038
+    const v24, #android:array@config_globalActionsList#t
 
     invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -1770,7 +1771,7 @@
 
     move-result-object v23
 
-    const v24, 0x10e0040
+    const v24, #android:integer@config_longPressOnPowerBehavior#t
 
     invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -1782,7 +1783,7 @@
 
     if-eqz v23, :cond_9
 
-    const v19, 0x1040120
+    const v19, #android:string@reboot_safemode_confirm#t
 
     .line 247
     .local v19, "resourceId":I
@@ -1797,10 +1798,8 @@
 
     if-eqz v23, :cond_2
 
-    .line 248
-    const v19, 0x1040122
+    const v19, #android:string@reboot_confirm#t
 
-    .line 253
     :cond_2
     const-string v23, "ShutdownThread"
 
@@ -1868,7 +1867,7 @@
     .line 264
     new-instance v23, Landroid/view/ContextThemeWrapper;
 
-    const v24, 0x1030128
+    const v24, #android:style@Theme.DeviceDefault#t
 
     move-object/from16 v0, v23
 
@@ -1882,7 +1881,7 @@
 
     move-result-object v23
 
-    const v24, 0x10900f1
+    const v24, #android:layout@wt_reboot_dialog_content#t
 
     const/16 v25, 0x0
 
@@ -1941,8 +1940,7 @@
 
     if-eqz v23, :cond_d
 
-    .line 281
-    const v23, 0x10203de
+    const v23, #android:id@checkbox_linearLayout#t
 
     invoke-virtual/range {v22 .. v23}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1958,8 +1956,7 @@
 
     invoke-virtual {v6, v0}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 283
-    const v23, 0x1020001
+    const v23, #android:id@checkbox#t
 
     invoke-virtual/range {v22 .. v23}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1969,7 +1966,7 @@
 
     .line 284
     .local v5, "cb":Landroid/widget/CheckBox;
-    const v23, 0x10202f7
+    const v23, #android:id@status#t
 
     invoke-virtual/range {v22 .. v23}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -2044,7 +2041,7 @@
 
     if-eqz v23, :cond_e
 
-    const v23, 0x104011f
+    const v23, #android:string@reboot_safemode_title#t
 
     :goto_7
     move-object/from16 v0, v24
@@ -2087,7 +2084,7 @@
 
     move-result-object v23
 
-    const v24, 0x1040013
+    const v24, #android:string@yes#t
 
     new-instance v25, Lcom/android/server/power/ShutdownThread$3;
 
@@ -2101,7 +2098,7 @@
 
     move-result-object v23
 
-    const v24, 0x1040009
+    const v24, #android:string@no#t
 
     new-instance v25, Lcom/android/server/power/ShutdownThread$2;
 
@@ -2212,7 +2209,7 @@
 
     if-ne v0, v1, :cond_a
 
-    const v19, 0x104011e
+    const v19, #android:string@shutdown_confirm_question#t
 
     goto/16 :goto_4
 
@@ -2224,7 +2221,7 @@
     goto/16 :goto_4
 
     :cond_b
-    const v19, 0x104011d
+    const v19, #android:string@shutdown_confirm#t
 
     goto/16 :goto_4
 
@@ -2260,12 +2257,12 @@
 
     if-eqz v23, :cond_f
 
-    const v23, 0x1040121
+    const v23, #android:string@reboot_title#t
 
     goto/16 :goto_7
 
     :cond_f
-    const v23, 0x1040117
+    const v23, #android:string@power_off#t
 
     goto/16 :goto_7
 
