@@ -1,0 +1,1 @@
+Base on Android 5.1.1 For Lenovo K32c36.
