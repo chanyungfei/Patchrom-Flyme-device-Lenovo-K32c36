@@ -40,7 +40,7 @@ vendor_modify_images := boot
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-vendor_remove_dirs := media
+vendor_remove_dirs := media vendor/operator/app
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
@@ -150,8 +150,8 @@ override_property += \
 # The default value is nothing.
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
-# remove_property += \
-#     dev.defaultwallpaper
+remove_property += \
+    persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
 
 ##############################################################################
 # Defines whether uses assertions in /META-INF/com/google/android/updater-script of the OTA package.
