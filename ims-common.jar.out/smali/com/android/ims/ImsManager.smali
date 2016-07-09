@@ -872,6 +872,75 @@
     return-void
 .end method
 
+.method public static setEnhanced4gLteModeSetting(Landroid/content/Context;Z)V
+    .locals 4
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "enabled"    # Z
+
+    .prologue
+    .line 181
+    if-eqz p1, :cond_1
+
+    const/4 v1, 0x1
+
+    .line 182
+    .local v1, "value":I
+    :goto_0
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v2
+
+    const-string v3, "volte_vt_enabled"
+
+    invoke-static {v2, v3, v1}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    .line 186
+    invoke-static {p0}, Lcom/android/ims/ImsManager;->isNonTtyOrTtyOnVolteEnabled(Landroid/content/Context;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 187
+    invoke-static {}, Landroid/telephony/SubscriptionManager;->getDefaultVoicePhoneId()I
+
+    move-result v2
+
+    invoke-static {p0, v2}, Lcom/android/ims/ImsManager;->getInstance(Landroid/content/Context;I)Lcom/android/ims/ImsManager;
+
+    move-result-object v0
+
+    .line 189
+    .local v0, "imsManager":Lcom/android/ims/ImsManager;
+    if-eqz v0, :cond_0
+
+    .line 191
+    :try_start_0
+    invoke-direct {v0, p1}, Lcom/android/ims/ImsManager;->setAdvanced4GMode(Z)V
+    :try_end_0
+    .catch Lcom/android/ims/ImsException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 197
+    .end local v0    # "imsManager":Lcom/android/ims/ImsManager;
+    :cond_0
+    :goto_1
+    return-void
+
+    .line 181
+    .end local v1    # "value":I
+    :cond_1
+    const/4 v1, 0x0
+
+    goto :goto_0
+
+    .line 192
+    .restart local v0    # "imsManager":Lcom/android/ims/ImsManager;
+    .restart local v1    # "value":I
+    :catch_0
+    move-exception v2
+
+    goto :goto_1
+.end method
 
 # virtual methods
 .method public close(I)V
@@ -1590,7 +1659,7 @@
     return v1
 .end method
 
-.method public setAdvanced4GMode(Z)V
+.method private setAdvanced4GMode(Z)V
     .locals 9
     .param p1, "turnOn"    # Z
     .annotation system Ldalvik/annotation/Throws;
