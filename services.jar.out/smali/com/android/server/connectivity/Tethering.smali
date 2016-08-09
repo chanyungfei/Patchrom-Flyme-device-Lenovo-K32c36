@@ -1763,13 +1763,11 @@
 
     .line 659
     :cond_b
-    # Modify by Yaphet.Chan 2016-8-4 11:38:56
-    #const v12, #android:drawable@stat_sys_tether_wifi#t
+    const v12, #android:drawable@stat_sys_tether_wifi#t
 
-    #move-object/from16 v0, p0
+    move-object/from16 v0, p0
 
-    #invoke-direct {v0, v12}, Lcom/android/server/connectivity/Tethering;->showTetheredNotification(I)V
-    invoke-direct/range {p0 .. p0}, Lcom/android/server/connectivity/Tethering;->showFlymeTetheredNotification()V
+    invoke-direct {v0, v12}, Lcom/android/server/connectivity/Tethering;->showTetheredNotification(I)V
 
     goto/16 :goto_0
 
@@ -4750,15 +4748,4 @@
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v9
-.end method
-
-.method private showFlymeTetheredNotification()V
-    .locals 1
-
-    .prologue
-    sget v0, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_wifi:I
-
-    invoke-direct {p0, v0}, Lcom/android/server/connectivity/Tethering;->showTetheredNotification(I)V
-
-    return-void
 .end method
