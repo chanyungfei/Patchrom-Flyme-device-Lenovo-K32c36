@@ -40,7 +40,7 @@ vendor_modify_images := boot
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_dirs := vendor/operator/app
+vendor_remove_dirs := media
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
@@ -57,7 +57,7 @@ vendor_remove_files := recovery-from-boot.bak
 vendor_saved_apps := Bluetooth KeyChain HTMLViewer UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation PrintSpooler SharedStorageBackup  ExternalStorageProvider InputDevices \
                      ProxyHandler Shell DefaultContainerService WAPPushManager Stk TimeService qcrilmsgtunnel \
-		     BluetoothExt CMSettingsProvider com.qualcomm.location shutdownlistener
+		     BluetoothExt CMSettingsProvider com.qualcomm.location
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -150,8 +150,8 @@ override_property += \
 # The default value is nothing.
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
-# remove_property += \
-#     dev.defaultwallpaper
+remove_property += \
+    ro.sf.lcd_density=320
 
 ##############################################################################
 # Defines whether uses assertions in /META-INF/com/google/android/updater-script of the OTA package.
