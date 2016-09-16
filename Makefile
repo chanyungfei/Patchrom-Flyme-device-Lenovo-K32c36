@@ -145,13 +145,16 @@ override_property += \
     ro.flyme.romer=Po_Chan \
     ro.product.model_romer=Lenovo K32c36_Po_Chan
 
+override_property += \
+    ro.sf.lcd_density=480
+
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
 # The default value is nothing.
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
-remove_property += \
-    ro.sf.lcd_density=320
+# remove_property += \
+#     dev.defaultwallpaper
 
 ##############################################################################
 # Defines whether uses assertions in /META-INF/com/google/android/updater-script of the OTA package.
